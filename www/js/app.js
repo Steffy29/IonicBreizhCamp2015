@@ -3,15 +3,33 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('app', ['ionic'])
+angular.module('app', ['ionic','firebase'])
 
 .config(function($stateProvider, $urlRouterProvider){
     $stateProvider
-    .state('app', {
-        url: '/app',
-        templateUrl: 'views/app.html'
+    .state('eventmenu', {
+      url: '/event',
+      abstract: 'true',
+      templateUrl: 'views/menu.html'
+    })
+    .state('eventmenu.home', {
+        url: '/home',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/home.html'
+          }
+        }
+    })
+    .state('eventmenu.grocery', {
+      url: '/grocery',
+      views: {
+        'menuContent': {
+          templateUrl: 'views/groceryList.html',
+          controller: 'ListCtrl'
+        }
+      }
     });
-    $urlRouterProvider.otherwise('/app');
+    $urlRouterProvider.otherwise('/event/home');
 })
 
 .run(function($ionicPlatform) {
