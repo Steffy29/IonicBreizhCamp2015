@@ -18,7 +18,7 @@ angular.module('app')
 		$ionicListDelegate.closeOptionButtons();
 	};
 })
-.controller('CameraCtrl', function($scope, Camera){
+/*.controller('CameraCtrl', function($scope, Camera){
 	$scope.getPhoto = function() {
 		Camera.getPicture().then(function(imageURI) {
 			console.log(imageURI);
@@ -33,6 +33,25 @@ angular.module('app')
 		});
 	};
 })
-.controller('GeolocationCtrl', function($cordovaGeolocation){
+*/
+.controller('CameraCtrl', function($scope, $ionicPlatform, $cordovaCamera){
+	$ionicPlatform.ready(function() {
+		var options = {
+			quality: 75,
+			targetWidth: 320,
+			targetHeight: 320,
+			saveToPhotoAlbum: false
+		};
+		$scope.getPhoto = function() {
+			$cordovaCamera.getPicture(options).then(function(imageURI) {
+				console.log(imageURI);
+				$scope.lastPhoto = imageURI;
+			}, function(err) {
+				console.error(err);
+			})
+		}
+	});
+})
+.controller('GeolocCtrl', function($cordovaGeolocation){
 	
 });
