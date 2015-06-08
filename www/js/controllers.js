@@ -39,12 +39,13 @@ angular.module('app')
 .controller('GeolocCtrl', function($scope, $cordovaGeolocation){
 	var posOptions = {
 		timeout: 10000,
-		enableHightAccuracy: false
+		enableHighAccuracy: false
 	};
 	$cordovaGeolocation.getCurrentPosition(posOptions).then(function(position){
 		var latitude = position.coords.latitude;
 		var longitude = position.coords.longitude;
 
+		alert("Votre position : " + latitude + ", " + longitude);
 		var latLng = new google.maps.LatLng(latitude, longitude);
 		var mapOptions = {
 			center: latLng,
@@ -64,8 +65,14 @@ angular.module('app')
 		console.error(err);
 	})
 })
-.controller('DeviceCtrl', function(){
-	
+.controller('DeviceCtrl', function($scope, $ionicPlatform, $cordovaDevice){
+	$ionicPlatform.ready(function() {
+		$scope.model = $cordovaDevice.getModel();
+		$scope.platform = $cordovaDevice.getPlatform();
+		$scope.version = $cordovaDevice.getVersion();
+		$scope.uuid = $cordovaDevice.getUUID();
+		$scope.cordova = $cordovaDevice.getCordova();
+	});
 })
 .controller('SmsCtrl', function($scope, $ionicPlatform, $cordovaSms){
 	$ionicPlatform.ready(function() {
