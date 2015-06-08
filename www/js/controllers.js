@@ -18,30 +18,14 @@ angular.module('app')
 		$ionicListDelegate.closeOptionButtons();
 	};
 })
-/*.controller('CameraCtrl', function($scope, Camera){
-	$scope.getPhoto = function() {
-		Camera.getPicture().then(function(imageURI) {
-			console.log(imageURI);
-			$scope.lastPhoto = imageURI;
-		}, function (err) {
-			console.err(err);
-		}, {
-			quality: 75,
-			targetWidth: 320,
-			targetHeight: 320,
-			saveToPhotoAlbum: false
-		});
-	};
-})
-*/
 .controller('CameraCtrl', function($scope, $ionicPlatform, $cordovaCamera){
+	var options = {
+		quality: 50,
+		targetWidth: 320,
+		targetHeight: 320,
+		saveToPhotoAlbum: false
+	};
 	$ionicPlatform.ready(function() {
-		var options = {
-			quality: 75,
-			targetWidth: 320,
-			targetHeight: 320,
-			saveToPhotoAlbum: false
-		};
 		$scope.getPhoto = function() {
 			$cordovaCamera.getPicture(options).then(function(imageURI) {
 				console.log(imageURI);
@@ -52,6 +36,31 @@ angular.module('app')
 		}
 	});
 })
-.controller('GeolocCtrl', function($cordovaGeolocation){
-	
+.controller('GeolocCtrl', function($scope, $cordovaGeolocation){
+	var posOptions = {
+		timeout: 10000,
+		enableHightAccuracy: false
+	};
+	$cordovaGeolocation.getCurrentPosition(posOptions).then(function(position){
+		var latitude = position.coords.latitude;
+		var longitude = position.coords.longitude;
+
+		var latLng = new google.maps.LatLng(latitude, longitude);
+		var mapOptions = {
+			center: latLng,
+			zoom: 16,
+          	mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("map"),
+            mapOptions);
+
+		var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: "Vous êtes ici!"
+        });
+		$scope.map = map;
+	}, function(err) {
+		console.error(err);
+	})
 });
