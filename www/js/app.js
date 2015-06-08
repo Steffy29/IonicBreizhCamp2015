@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('app', ['ionic','firebase'])
 
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider, $compileProvider){
     $stateProvider
     .state('eventmenu', {
       url: '/event',
@@ -20,6 +20,15 @@ angular.module('app', ['ionic','firebase'])
           }
         }
     })
+    .state('eventmenu.camera', {
+        url: '/camera',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/camera.html',
+            controller: 'CameraCtrl'
+          }
+        }
+    })
     .state('eventmenu.grocery', {
       url: '/grocery',
       views: {
@@ -30,6 +39,9 @@ angular.module('app', ['ionic','firebase'])
       }
     });
     $urlRouterProvider.otherwise('/event/home');
+
+    // AngularJS Whitelisting
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 })
 
 .run(function($ionicPlatform) {
