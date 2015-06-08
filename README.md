@@ -7,6 +7,6 @@ Cette application va permettre de tester :
 * la création d'une liste de courses avec stockage dans Firebase
 * l'accès à la caméra sur le device
 * l'accès à la géolocalisation
-* l'accès au bluetooth
-* l'envoi de notification en mode push
-
+* la récupération des informations du device comme la plateforme et le model du device
+* l'affichage d'un splashscreen et d'une icône pour l'application
+* l'envoi de SMS

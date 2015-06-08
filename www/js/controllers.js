@@ -63,4 +63,41 @@ angular.module('app')
 	}, function(err) {
 		console.error(err);
 	})
+})
+.controller('DeviceCtrl', function(){
+	
+})
+.controller('SmsCtrl', function($scope, $ionicPlatform, $cordovaSms){
+	$ionicPlatform.ready(function() {
+		$scope.sendSmsAppNative = function(phoneNumber, msg) {
+			console.log(phoneNumber + ", " + msg);
+
+			var options = {
+				replaceLineBreaks: false,
+				android: {
+					intent: 'INTENT'
+				}
+			};
+			$cordovaSms.send(phoneNumber, msg, options).then(function() {
+				alert('Message sent successfully!');
+			}, function(err) {
+				console.error(err);
+			});
+		}
+		$scope.sendSmsWithoutApp = function(phoneNumber, msg) {
+			console.log(phoneNumber + ", " + msg);
+
+			var options = {
+				replaceLineBreaks: false,
+				android: {
+					intent: ''
+				}
+			};
+			$cordovaSms.send(phoneNumber, msg, options).then(function() {
+				alert('Message sent successfully!');
+			}, function(err) {
+				console.error(err);
+			});
+		}
+	});
 });

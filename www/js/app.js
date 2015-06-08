@@ -38,6 +38,24 @@ angular.module('app', ['ionic','firebase','ngCordova'])
           }
         }
     })
+    .state('eventmenu.device', {
+        url: '/device',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/device.html',
+            controller: 'DeviceCtrl'
+          }
+        }
+    })
+    .state('eventmenu.sms', {
+        url: '/sms',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/sms.html',
+            controller: 'SmsCtrl'
+          }
+        }
+    })
     .state('eventmenu.grocery', {
       url: '/grocery',
       views: {

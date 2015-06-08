@@ -1,0 +1,12 @@
+<ion-view view-title="Envoi de SMS">
+	<ion-content class="padding">
+		<label class="item item-input">
+			<input type="tel" ng-model="phoneNumber" placeHolder="Saisir numéro de téléphone">
+		</label>
+		<label class="item">
+			<input type="textarea" ng-model="msg" placeHolder="Saisir message">
+		</label>
+		<button ng-click="sendSmsAppNative(phoneNumber, msg)" class="button button-block button-primary">Envoyer message via application native</button>
+		<button ng-click="sendSmsWithoutApp(phoneNumber, msg)" class="button button-block button-primary">Envoyer message directement</button>
+	</ion-content>
+</ion-view>
