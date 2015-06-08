@@ -3,3 +3,35 @@
 	color: #9E9E9E;
 	text-decoration: line-through;
 }
+
+.bar-newcolor {
+    border-color: #0E809F;
+    background-color: #71159A;
+    background-image: linear-gradient(0deg, #0E809F, #0E809F 50%, transparent 50%);
+    color: #fff; }
+    .bar.bar-newcolor .title {
+      color: #fff; }
+    .bar.bar-newcolor.bar-footer {
+      background-image: linear-gradient(180deg, #0E809F, #0E809F 50%, transparent 50%); }	
+}
+
+.bar-newcolor .button {
+  border-color: #0E809F;
+  background-color: #71159A;
+  color: #fff; }
+  .bar-newcolor .button:hover {
+    color: #fff;
+    text-decoration: none; }
+  .bar-newcolor .button.active, .bar-newcolor .button.activated {
+    border-color: #0E809F;
+    background-color: #71159A;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+  .bar-newcolor .button.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 17px; }
+  .bar-newcolor .button.button-icon {
+    border-color: transparent;
+    background: none; }

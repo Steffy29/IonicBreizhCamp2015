@@ -29,6 +29,15 @@ angular.module('app', ['ionic','firebase'])
           }
         }
     })
+    .state('eventmenu.geolocation', {
+        url: '/geolocation',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/geolocation.html',
+            controller: 'GeolocationCtrl'
+          }
+        }
+    })
     .state('eventmenu.grocery', {
       url: '/grocery',
       views: {

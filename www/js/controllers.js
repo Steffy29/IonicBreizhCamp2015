@@ -32,4 +32,7 @@ angular.module('app')
 			saveToPhotoAlbum: false
 		});
 	};
+})
+.controller('GeolocationCtrl', function($cordovaGeolocation){
+	
 });
