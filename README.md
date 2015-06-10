@@ -17,8 +17,8 @@ Pour construire l'application et la lancer, il faut récupérer les librairies d
 
 ## Ajout de la plate-forme cible
 En fonction de la plate-forme cible :
-`ionic platform add android` pour une plate-forme Android
-`ionic platform add ios` pour une plate-forme iOS
++ `ionic platform add android` pour une plate-forme Android
++ `ionic platform add ios` pour une plate-forme iOS
 
 ## Lancement de l'application
 Pour lancer l'application, on peut le faire de plusieurs façons différentes :
