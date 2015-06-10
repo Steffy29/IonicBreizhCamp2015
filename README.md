@@ -10,3 +10,5 @@ Cette application va permettre de tester :
 * la récupération des informations du device comme la plateforme et le model du device
 * l'affichage d'un splashscreen et d'une icône pour l'application
 * l'envoi de SMS
+
+## Lancement de l'application
